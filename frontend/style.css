@@ -1,0 +1,163 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--tg-theme-bg-color, #ffffff);
+  color: var(--tg-theme-text-color, #111111);
+  padding-bottom: 70px;
+}
+
+#app { max-width: 480px; margin: 0 auto; padding: 12px; }
+
+.balances {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 4px 16px;
+  font-weight: 600;
+  font-size: 15px;
+}
+#netBadge {
+  margin-left: auto;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  background: #999;
+  color: #fff;
+}
+#netBadge.online { background: #34c759; }
+#netBadge.offline { background: #8e8e93; }
+
+.screen { display: none; }
+.screen.active { display: block; }
+
+h2 { margin: 4px 0 8px; }
+.hint { color: var(--tg-theme-hint-color, #888888); font-size: 14px; margin-bottom: 12px; }
+
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  margin-top: 10px;
+  cursor: pointer;
+}
+button.primary {
+  background: var(--tg-theme-button-color, #2481cc);
+  color: var(--tg-theme-button-text-color, #ffffff);
+}
+button.secondary {
+  background: var(--tg-theme-secondary-bg-color, #f0f0f0);
+  color: var(--tg-theme-text-color, #111111);
+}
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.hidden { display: none !important; }
+
+.timerRow { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+#timerBar { flex: 1; height: 8px; border-radius: 4px; background: #e5e5ea; overflow: hidden; }
+#timerFill { height: 100%; width: 100%; background: #34c759; transition: width 0.2s linear; }
+#timerText { font-weight: 700; min-width: 28px; text-align: right; }
+
+#questionCard {
+  background: var(--tg-theme-secondary-bg-color, #f7f7f7);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+}
+#questionText { font-size: 32px; font-weight: 700; margin-bottom: 20px; }
+
+.options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.optionBtn {
+  background: var(--tg-theme-bg-color, #fff);
+  border: 2px solid #e5e5ea;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 0;
+}
+.optionBtn.correct { border-color: #34c759; background: #e9f9ee; }
+.optionBtn.wrong { border-color: #ff3b30; background: #fdeceb; }
+
+#scoreRow { text-align: center; margin-top: 16px; color: var(--tg-theme-hint-color, #888); }
+
+#refLinkBox { display: flex; gap: 8px; margin-bottom: 4px; }
+#refLinkInput {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e5ea;
+  font-size: 13px;
+}
+#copyRefBtn { width: auto; margin-top: 0; padding: 12px 16px; }
+
+#starsProgressBar { height: 14px; border-radius: 7px; background: #e5e5ea; overflow: hidden; margin: 10px 0 4px; }
+#starsProgressFill { height: 100%; width: 0%; background: #ffcc00; transition: width 0.3s; }
+#starsProgressText { text-align: center; color: var(--tg-theme-hint-color, #888); margin-bottom: 8px; }
+.notice { background: #fff4e5; color: #9a6700; padding: 12px; border-radius: 10px; text-align: center; }
+
+.tabbar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  display: flex;
+  background: var(--tg-theme-bg-color, #fff);
+  border-top: 1px solid #e5e5ea;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.tab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 10px 4px;
+  font-size: 12px;
+  margin: 0;
+  border-radius: 0;
+  color: var(--tg-theme-hint-color, #888);
+}
+.tab.active { color: var(--tg-theme-button-color, #2481cc); font-weight: 700; }
+
+.shopGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.bgCard {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 2px solid #e5e5ea;
+  background: var(--tg-theme-secondary-bg-color, #f7f7f7);
+}
+.bgCard.selectedCard { border-color: #34c759; }
+.bgPreview {
+  height: 70px;
+  background-size: 200% 200%;
+}
+.bgPreview.animated { animation: bgShift 4s ease infinite; }
+@keyframes bgShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.bgInfo { padding: 8px 10px 10px; }
+.bgName { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.bgCard button { margin-top: 0; padding: 8px; font-size: 13px; }
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--tg-theme-secondary-bg-color, #f7f7f7);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 10px;
+}
+.task button { width: auto; margin: 0; padding: 8px 14px; font-size: 14px; }

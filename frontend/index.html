@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Tez Hisob</title>
+<link rel="stylesheet" href="style.css" />
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<!-- AdsGram SDK -- verify this script URL against your AdsGram dashboard, it can change -->
+<script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+  <nav class="tabbar">
+    <button class="tab active" data-tab="home">🏠 Bosh</button>
+    <button class="tab" data-tab="shop">🎨 Do'kon</button>
+    <button class="tab" data-tab="tasks">📋 Vazifalar</button>
+    <button class="tab" data-tab="ref">👥 Do'stlar</button>
+    <button class="tab" data-tab="stars">⭐ Stars</button>
+  </nav>
+
+  <div class="balances">
+    <span id="coinsBalance">🪙 0</span>
+    <span id="diamondsBalance">💎 0</span>
+    <span id="netBadge" class="offline">Offlayn</span>
+  </div>
+
+  <!-- ---------- HOME / GAME ---------- -->
+  <section id="tab-home" class="screen active">
+
+    <div id="startScreen">
+      <h2>Tez Hisob</h2>
+      <p>60 soniyada imkon qadar ko'proq misol yeching!</p>
+      <button id="startBtn" class="primary">▶️ Boshlash</button>
+      <button id="dailyBtn" class="secondary">🎁 Kunlik bonus</button>
+    </div>
+
+    <div id="gameScreen" class="hidden">
+      <div class="timerRow">
+        <div id="timerBar"><div id="timerFill"></div></div>
+        <span id="timerText">60</span>
+      </div>
+      <div id="questionCard">
+        <div id="questionText">—</div>
+        <div id="options" class="options"></div>
+      </div>
+      <div id="scoreRow">To'g'ri javoblar: <b id="liveScore">0</b></div>
+    </div>
+
+    <div id="resultScreen" class="hidden">
+      <h2>Vaqt tugadi!</h2>
+      <p>Siz <b id="finalScore">0</b> ta to'g'ri javob berdingiz</p>
+      <p>Ishlangan tanga: <b id="coinsEarned">0</b> 🪙</p>
+      <button id="multiplierBtn" class="secondary">📺 Reklama ko'rib 2x oling</button>
+      <button id="playAgainBtn" class="primary">Yana o'ynash</button>
+    </div>
+
+    <div id="continueOffer" class="hidden">
+      <p>Vaqt tugadi. Davom etasizmi?</p>
+      <button id="continueBtn" class="secondary">📺 Reklama ko'rib +15 soniya</button>
+      <button id="stopBtn" class="primary">To'xtatish</button>
+    </div>
+
+  </section>
+
+  <!-- ---------- SHOP ---------- -->
+  <section id="tab-shop" class="screen">
+    <h2>Fonlar do'koni</h2>
+    <p class="hint">🪙 tangalar evaziga fon sotib oling va tanlang</p>
+    <div id="shopGrid" class="shopGrid"></div>
+  </section>
+
+  <!-- ---------- TASKS ---------- -->
+  <section id="tab-tasks" class="screen">
+    <h2>Homiy kanallar</h2>
+    <p class="hint">Kanalga obuna bo'lib, 💎 oling</p>
+    <div id="tasksList"></div>
+  </section>
+
+  <!-- ---------- REFERRAL ---------- -->
+  <section id="tab-ref" class="screen">
+    <h2>Do'stlaringizni taklif qiling</h2>
+    <p class="hint">Do'stingiz kamida 3 ta reklama ko'rgach, sizga 20 💎 beriladi</p>
+    <div id="refLinkBox">
+      <input id="refLinkInput" readonly />
+      <button id="copyRefBtn">Nusxalash</button>
+    </div>
+    <button id="shareRefBtn" class="primary">Ulashish</button>
+  </section>
+
+  <!-- ---------- STARS ---------- -->
+  <section id="tab-stars" class="screen">
+    <h2>Telegram Stars olish</h2>
+    <p class="hint" id="starsRatio">300 💎 = 15 ⭐</p>
+    <div id="starsProgressBar"><div id="starsProgressFill"></div></div>
+    <p id="starsProgressText">0 / 300</p>
+    <button id="starsRequestBtn" class="primary" disabled>15 Stars so'rash</button>
+    <p id="cashoutNotice" class="notice hidden">
+      Stars almashtirish hozircha yopiq — navbatdagi aksiyada ochiladi! ⏳
+    </p>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
