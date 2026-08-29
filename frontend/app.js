@@ -1,4 +1,4 @@
-const API_BASE = "https://YOUR-BACKEND-URL.up.railway.app"; // <-- backend deploy URL bilan almashtiring
+const API_BASE = "https://math-tma-production.up.railway.app"; 
 
 const tg = window.Telegram.WebApp;
 tg.ready();
